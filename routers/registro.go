@@ -21,7 +21,7 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "El Email de usuario es requerido", 400)
 		return
 	}
-	if len(t.Email) < 6 {
+	if len(t.Password) < 6 {
 		http.Error(w, "El password debe tener mas de 6 caracteres", 400)
 		return
 	}
