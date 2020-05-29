@@ -8,7 +8,7 @@ import (
 	"github.com/GabrielGJU7/VitoGames/models"
 )
 
-/*registro es la funcion para crear en la BD el registro de usuarios*/
+/*Registro es la funcion para crear en la BD el registro de usuarios*/
 
 func Registro(w http.ResponseWriter, r *http.Request) {
 	var t models.Usuario

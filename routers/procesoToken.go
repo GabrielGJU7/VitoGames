@@ -9,8 +9,10 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
+/*Email es una variable*/
 var Email string
 
+/*IDUsuario es una variable*/
 var IDUsuario string
 
 /*ProcesoToken proceso token para extraer los valores*/
