@@ -1,4 +1,4 @@
-package routers 
+package routers
 
 import (
 	"errors"
@@ -14,7 +14,7 @@ var Email string
 var IDUsuario string
 
 /*ProcesoToken proceso token para extraer los valores*/
-func ProcesoToken(tk string) (*models.Claim, bool, string, error){
+func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 	miClave := []byte("MastersDelDesarrollo")
 	claims := &models.Claim{}
 	splitToken := strings.Split(tk, "Bearer")
@@ -24,7 +24,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error){
 
 	tk = strings.TrimSpace(splitToken[1])
 
-	jwt.ParseWithClaims(tk, claims, func(token *jwt.Token)(interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(tk, claims, func(token *jwt.Token) (interface{}, error) {
 		return miClave, nil
 	})
 
@@ -32,7 +32,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error){
 		_, encontrado, _ := bd.ChequeoYaExisteUsuario(claims.Email)
 		if encontrado == true {
 			Email = claims.Email
-			IDUsuario = claims.ID
+			IDUsuario = claims.ID.Hex()
 		}
 		return claims, encontrado, IDUsuario, nil
 	}

@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+/*VerPerfil busca un perfil de un usuario*/
 func VerPerfil(w http.ResponseWriter, r *http.Request)  {
 	ID := r.URL.Query().Get("id")
 	if len(ID) < 1 {

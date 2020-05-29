@@ -10,6 +10,7 @@ import (
 	"github.com/GabrielGJU7/VitoGames/models"
 )
 
+/*Login sirve para ingresar */
 func Login(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "aplication/json")
 
