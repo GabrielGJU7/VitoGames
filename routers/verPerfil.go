@@ -2,12 +2,13 @@ package routers
 
 import (
 	"encoding/json"
-	"github.com/GabrielGJU7/VitoGames/bd"
 	"net/http"
+
+	"github.com/GabrielGJU7/VitoGames/bd"
 )
 
 /*VerPerfil busca un perfil de un usuario*/
-func VerPerfil(w http.ResponseWriter, r *http.Request)  {
+func VerPerfil(w http.ResponseWriter, r *http.Request) {
 	ID := r.URL.Query().Get("id")
 	if len(ID) < 1 {
 		http.Error(w, "Debe enviar el parametro ID", http.StatusBadRequest)
