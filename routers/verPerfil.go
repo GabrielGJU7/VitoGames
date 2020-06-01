@@ -14,10 +14,9 @@ func VerPerfil(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Debe enviar el parametro ID", http.StatusBadRequest)
 		return
 	}
-
 	perfil, err := bd.BuscoPerfil(ID)
 	if err != nil {
-		http.Error(w, "Ocurrio un error al intentar buscar el registro"+err.Error(), 400)
+		http.Error(w, "ocurrio un error al intentar buscar el registro"+err.Error(), 400)
 		return
 	}
 	w.Header().Set("context-type", "application/json")

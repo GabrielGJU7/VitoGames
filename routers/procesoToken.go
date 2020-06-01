@@ -9,16 +9,17 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
-/*Email es una variable*/
+/*Email comentario*/
 var Email string
 
-/*IDUsuario es una variable*/
+/*IDUsuario comentario*/
 var IDUsuario string
 
-/*ProcesoToken proceso token para extraer los valores*/
+/*ProcesoToken proceso token pra extraer susvalores*/
 func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
-	miClave := []byte("MastersDelDesarrollo")
+	miClave := []byte("MasterDelDesarrollo")
 	claims := &models.Claim{}
+
 	splitToken := strings.Split(tk, "Bearer")
 	if len(splitToken) != 2 {
 		return claims, false, string(""), errors.New("Formato de token invalido")
@@ -29,7 +30,6 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 	tkn, err := jwt.ParseWithClaims(tk, claims, func(token *jwt.Token) (interface{}, error) {
 		return miClave, nil
 	})
-
 	if err == nil {
 		_, encontrado, _ := bd.ChequeoYaExisteUsuario(claims.Email)
 		if encontrado == true {
@@ -38,8 +38,9 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 		}
 		return claims, encontrado, IDUsuario, nil
 	}
-	if !tkn.Valid {
+	if tkn.Valid {
 		return claims, false, string(""), errors.New("Token Invalido")
 	}
+
 	return claims, false, string(""), err
 }
