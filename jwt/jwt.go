@@ -3,7 +3,6 @@ package jwt
 import (
 	"time"
 
-
 	"github.com/GabrielGJU7/VitoGames/models"
 	jwt "github.com/dgrijalva/jwt-go"
 )
@@ -11,10 +10,10 @@ import (
 /*GeneroJWT sirve para crear un token para el login*/
 
 func GeneroJWT(t models.Usuario) (string, error) {
-	miClave := []byte("MasterDelDesarrollo")
+	miClave := []byte("redsocial")
 
 	payload := jwt.MapClaims{
-		"email": 			t.Email,
+		"email":            t.Email,
 		"nombre":           t.Nombre,
 		"apellidos":        t.Apellidos,
 		"fecha_nacimiento": t.FechaNacimiento,

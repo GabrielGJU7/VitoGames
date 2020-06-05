@@ -6,7 +6,6 @@ import (
 )
 
 /*IntentoLogin sirve para validar el inicio de sesion*/
-
 func IntentoLogin(email string, password string) (models.Usuario, bool) {
 	usu, encontrado, _ := ChequeoYaExisteUsuario(email)
 	if encontrado == false {

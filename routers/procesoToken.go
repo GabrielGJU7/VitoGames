@@ -6,23 +6,23 @@ import (
 
 	"github.com/GabrielGJU7/VitoGames/bd"
 	"github.com/GabrielGJU7/VitoGames/models"
-	jwt "github.com/dgrijalva/jwt-go"
+	"github.com/dgrijalva/jwt-go"
 )
 
-/*Email comentario*/
+//Email
 var Email string
 
-/*IDUsuario comentario*/
+//IDUsuario
 var IDUsuario string
 
-/*ProcesoToken proceso token pra extraer susvalores*/
+//ProcesoToken
 func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
-	miClave := []byte("MasterDelDesarrollo")
+	miClave := []byte("redsocial")
 	claims := &models.Claim{}
 
 	splitToken := strings.Split(tk, "Bearer")
 	if len(splitToken) != 2 {
-		return claims, false, string(""), errors.New("Formato de token invalido")
+		return claims, false, string(""), errors.New("formato de token inválido")
 	}
 
 	tk = strings.TrimSpace(splitToken[1])
@@ -38,8 +38,8 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 		}
 		return claims, encontrado, IDUsuario, nil
 	}
-	if tkn.Valid {
-		return claims, false, string(""), errors.New("Token Invalido")
+	if !tkn.Valid {
+		return claims, false, string(""), errors.New("Token Inválido")
 	}
 
 	return claims, false, string(""), err
